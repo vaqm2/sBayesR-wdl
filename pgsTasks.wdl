@@ -2,13 +2,13 @@ version 1.0
 
 task p_ranges {
     input {
-        String p_values
+        File p_values
         String output_prefix
     }
 
-    command <<<
-        echo ${p_values} | awk -F ',' '{for(i = 1; i <= NF; i++) print $i " 0 " $i}' > ${output_prefix}.rangeList.txt
-    >>>
+    command {
+        perl /home/people/vivapp/pipelines/sBayesR-wdl/p_ranges.pl ${p_values} ${output_prefix}
+    }
 
     output {
         File rangeList = "${output_prefix}.rangeList.txt"
