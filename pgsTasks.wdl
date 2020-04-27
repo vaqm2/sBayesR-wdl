@@ -4,10 +4,11 @@ task p_ranges {
     input {
         File p_values
         String output_prefix
+        String code_dir
     }
 
     command {
-        perl /home/people/vivapp/pipelines/sBayesR-wdl/p_ranges.pl ${p_values} ${output_prefix}
+        perl ${code_dir}/p_ranges.pl ${p_values} ${output_prefix}
     }
 
     output {
@@ -43,12 +44,13 @@ task scoring {
 
 task r2 {
     input {
+        String code_dir
         Array [File] scores
         String output_prefix
     }
 
     command {
-        ./calcNagelkerkeR2.R ${write_lines(scores)} ${output_prefix}
+        ${code_dir}/calcNagelkerkeR2.R ${write_lines(scores)} ${output_prefix}
     }
 
     output {

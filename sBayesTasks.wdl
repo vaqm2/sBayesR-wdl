@@ -4,10 +4,11 @@ task split {
     input {
         File gwas
         String output_prefix
+        String code_dir
     }
 
     command {
-        ./splitGwas.groovy -i ${gwas} -o ${output_prefix}
+        ${code_dir}/splitGwas.groovy -i ${gwas} -o ${output_prefix}
     }
 
     output {
@@ -21,14 +22,15 @@ task run {
     input {
         File GCTB
         File gwas
-        File ld_matrix
+        File ld_bin_file
+        File ld_info_file
         String output_prefix
     }
 
     command {
         ${GCTB} --sbayes R \
         --gwas-summary ${gwas} \
-        --ldm ${ld_matrix} \
+        --ldm ${ld_bin_file} \
         --gamma 0.0,0.01,0.1,1 \
         --pi 0.95,0.02,0.02,0.01 \
         --burn-in 20000 \
@@ -47,10 +49,11 @@ task merge {
     input {
         Array [File] snp_posteriors
         String output_prefix
+        String code_dir
     }
 
     command {
-        ./merge_posteriors.groovy -f ${write_lines(snp_posteriors)} -o ${output_prefix}
+        ${code_dir}/merge_posteriors.groovy -f ${write_lines(snp_posteriors)} -o ${output_prefix}
     }
 
     output {

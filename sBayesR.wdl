@@ -26,39 +26,50 @@ workflow sBayesR {
         File bed
         File bim
         File fam
-        File file_of_ld_matrices_by_chr
+        File json_ld_bins
+        File json_ld_info
         File p_value_thresholds
         String out
+        String code_dir
         File gctb_executable_path
         File plink_executable_path
+        File groovy_executable_path
     }
 
-    Array [File] ld_matrices = read_lines(file_of_ld_matrices_by_chr)
+    Map [String, File] ld_bins = read_json(json_ld_bins)
+    Map [String, File] ld_info = read_json(json_ld_info)
 
     call sbayes.split {
         input:
             gwas          = gwas,
-            output_prefix = out
+            output_prefix = out,
+            code_dir      = code_dir
     }
 
-    scatter(pair in zip(split.gwas_by_chr, ld_matrices)) {
+    scatter(chr_assoc in split.gwas_by_chr) {
+        String chr       = sub(sub(chr_assoc, out, ""), "\.assoc$", "")
+        String prefix    = sub(chr_assoc, "\.assoc$", "")
+
         call sbayes.run {
             input:
                 GCTB          = gctb_executable_path,
-                gwas          = pair.left,
-                ld_matrix     = pair.right,
-                output_prefix = out
+                gwas          = chr_assoc,
+                ld_bin_file   = ld_bins[chr],
+                ld_info_file  = ld_info[chr],
+                output_prefix = prefix
         }
     }
 
     call sbayes.merge {
         input:
+            code_dir       = code_dir,
             snp_posteriors = run.snp_posterior,
             output_prefix  = out
     }
 
     call pgs.p_ranges {
         input:
+            code_dir      = code_dir,
             p_values      = p_value_thresholds,
             output_prefix = out
     }
@@ -77,6 +88,7 @@ workflow sBayesR {
 
     call pgs.r2 {
         input:
+            code_dir      = code_dir,
             scores        = scoring.scores,
             output_prefix = out
     }
