@@ -6,12 +6,12 @@ task p_ranges {
         String output_prefix
     }
 
-    command {
-        awk -F ',' ${p_values} '{for(i = 1; i <= NF; i++) print $i " 0 " $i}' > ${output_prefix}_p_value_thresholds.txt
-    }
+    command <<<
+        awk -F ',' '{for(i = 1; i <= NF; i++) print $i " 0 " $i}' ${p_values}
+    >>>
 
     output {
-        File rangeList = "${output_prefix}_p_value_thresholds.txt"
+        File rangeList = read_string(stdout())
     }
 }
 
