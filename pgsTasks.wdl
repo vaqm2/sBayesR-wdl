@@ -7,11 +7,11 @@ task p_ranges {
     }
 
     command <<<
-        awk -F ',' '{for(i = 1; i <= NF; i++) print $i " 0 " $i}' ${p_values}
+        echo ${p_values} | awk -F ',' '{for(i = 1; i <= NF; i++) print $i " 0 " $i}' > ${output_prefix}.rangeList.txt
     >>>
 
     output {
-        File rangeList = read_string(stdout())
+        File rangeList = "${output_prefix}.rangeList.txt"
     }
 }
 
