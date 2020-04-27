@@ -7,7 +7,7 @@ task p_ranges {
     }
 
     command {
-        bin/write_p_ranges.groovy -i ${p_values} -o ${output_prefix}
+        awk -F ',' ${p_values} '{for(i = 1; i <= NF; i++) print $i " 0 " $i}' > ${output_prefix}_p_value_thresholds.txt
     }
 
     output {
