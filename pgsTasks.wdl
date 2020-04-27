@@ -44,11 +44,11 @@ task scoring {
 task r2 {
     input {
         Array [File] scores
-        File output_prefix
+        String output_prefix
     }
 
     command {
-        ./calcNagelkerkeR2.R ${write_lines(scores)}
+        ./calcNagelkerkeR2.R ${write_lines(scores)} ${output_prefix}
     }
 
     output {
