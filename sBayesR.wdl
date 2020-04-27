@@ -37,16 +37,16 @@ workflow sBayesR {
 
     call sbayes.split {
         input:
-            gwas = gwas,
+            gwas          = gwas,
             output_prefix = out
     }
 
     scatter(pair in zip(split.gwas_by_chr, ld_matrices)) {
         call sbayes.run {
             input:
-                GCTB = gctb_executable_path,
-                gwas = pair.left,
-                ld_matrix = pair.right,
+                GCTB          = gctb_executable_path,
+                gwas          = pair.left,
+                ld_matrix     = pair.right,
                 output_prefix = out
         }
     }
@@ -54,35 +54,35 @@ workflow sBayesR {
     call sbayes.merge {
         input:
             snp_posteriors = run.snp_posterior,
-            output_prefix = out
+            output_prefix  = out
     }
 
     call pgs.p_ranges {
         input:
-            p_values = p_value_thresholds,
+            p_values      = p_value_thresholds,
             output_prefix = out
     }
 
     call pgs.scoring {
         input:
-            PLINK = plink_executable_path,
-            rangeList = p_ranges.rangeList,
-            p_value_file = split.p_value_file,
-            snp_effects = merge.snp_posteriors_merged,
-            bed = bed,
-            bim = bim,
-            fam =fam,
+            PLINK         = plink_executable_path,
+            rangeList     = p_ranges.rangeList,
+            p_value_file  = split.p_value_file,
+            snp_effects   = merge.snp_posteriors_merged,
+            bed           = bed,
+            bim           = bim,
+            fam           = fam,
             output_prefix = out
     }
 
     call pgs.r2 {
         input:
-            scores = scoring.scores,
+            scores        = scoring.scores,
             output_prefix = out
     }
 
     output {
-        File scores = scoring.scores
+        File scores            = write_lines(scoring.scores)
         File VarianceExplained = r2.NagelkerkeR2
     }
 }

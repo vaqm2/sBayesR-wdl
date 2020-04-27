@@ -12,7 +12,7 @@ task split {
 
     output {
         Array [File] gwas_by_chr = glob("${output_prefix}_*.assoc")
-        File p_value_file = "${output_prefix}.pValues.txt"
+        File p_value_file        = "${output_prefix}.pValues.txt"
     }
 }
 
