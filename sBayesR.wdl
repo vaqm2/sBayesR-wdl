@@ -43,7 +43,8 @@ workflow sBayesR {
         input:
             gwas          = gwas,
             output_prefix = out,
-            code_dir      = code_dir
+            code_dir      = code_dir,
+            groovy_path   = groovy_executable_path
     }
 
     scatter(chr_assoc in split.gwas_by_chr) {
@@ -64,7 +65,8 @@ workflow sBayesR {
         input:
             code_dir       = code_dir,
             snp_posteriors = run.snp_posterior,
-            output_prefix  = out
+            output_prefix  = out,
+            groovy_path    = groovy_executable_path
     }
 
     call pgs.p_ranges {

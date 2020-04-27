@@ -3,12 +3,13 @@ version 1.0
 task split {
     input {
         File gwas
+        File groovy_path
         String output_prefix
         String code_dir
     }
 
     command {
-        ${code_dir}/splitGwas.groovy -i ${gwas} -o ${output_prefix}
+        ${groovy_path} ${code_dir}/splitGwas.groovy -i ${gwas} -o ${output_prefix}
     }
 
     output {
@@ -50,10 +51,11 @@ task merge {
         Array [File] snp_posteriors
         String output_prefix
         String code_dir
+        File groovy_path
     }
 
     command {
-        ${code_dir}/merge_posteriors.groovy -f ${write_lines(snp_posteriors)} -o ${output_prefix}
+        ${groovy_path} ${code_dir}/merge_posteriors.groovy -f ${write_lines(snp_posteriors)} -o ${output_prefix}
     }
 
     output {
