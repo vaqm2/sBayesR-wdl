@@ -27,7 +27,7 @@ workflow sBayesR {
         File bim
         File fam
         File file_of_ld_matrices_by_chr
-        String p_value_thresholds
+        File p_value_thresholds
         String out
         File gctb_executable_path
         File plink_executable_path
