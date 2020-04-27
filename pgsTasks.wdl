@@ -37,19 +37,18 @@ task scoring {
     }
 
     output {
-        File scores = glob("${output_prefix}.*.profile")
+        Array [File] scores = glob("${output_prefix}.*.profile")
     }
 }
 
 task r2 {
     input {
-        File scores
-        File pheno
+        Array [File] scores
         File output_prefix
     }
 
     command {
-        ./calcNagelkerkeR2.R ${scores} ${pheno}
+        ./calcNagelkerkeR2.R ${write_lines(scores)}
     }
 
     output {

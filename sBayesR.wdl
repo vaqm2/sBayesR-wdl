@@ -26,7 +26,6 @@ workflow sBayesR {
         File bed
         File bim
         File fam
-        File pheno
         File file_of_ld_matrices_by_chr
         String p_value_thresholds
         String out
@@ -79,7 +78,6 @@ workflow sBayesR {
     call pgs.r2 {
         input:
             scores = scoring.scores,
-            pheno = pheno,
             output_prefix = out
     }
 
