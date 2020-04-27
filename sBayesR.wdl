@@ -82,7 +82,7 @@ workflow sBayesR {
     }
 
     output {
-        File scores            = write_lines(scoring.scores)
+        Array [File] pgs       = scoring.scores
         File VarianceExplained = r2.NagelkerkeR2
     }
 }
