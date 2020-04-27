@@ -26,15 +26,16 @@ task run {
         File ld_bin_file
         File ld_info_file
         String output_prefix
+        String ld_prefix
     }
 
     command {
         ${GCTB} --sbayes R \
         --gwas-summary ${gwas} \
-        --ldm ${ld_bin_file} \
+        --ldm ${ld_prefix} \
         --gamma 0.0,0.01,0.1,1 \
         --pi 0.95,0.02,0.02,0.01 \
-        --burn-in 20000 \
+        --burn-in 2000 \
         --out-freq 10 \
         --out ${output_prefix} \
         --exclude-mhc \

@@ -57,7 +57,8 @@ workflow sBayesR {
                 gwas          = chr_assoc,
                 ld_bin_file   = ld_bins[chr],
                 ld_info_file  = ld_info[chr],
-                output_prefix = prefix
+                output_prefix = prefix,
+                ld_prefix     = sub(ld_bins[chr], "\.bin$", "")
         }
     }
 
