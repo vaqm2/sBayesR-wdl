@@ -58,11 +58,7 @@ workflow sBayesR {
                 ld_bin_file   = ld_bins[chr],
                 ld_info_file  = ld_info[chr],
                 output_prefix = prefix,
-<<<<<<< HEAD
                 ld_prefix     = sub(ld_bins[chr], "\.bin$", "")
-=======
-		ld_prefix     = sub(ld_bins[chr], "\.bin$", "")
->>>>>>> 72ed9dbfc9dd707c077f4c1eb97d276af3e3115b
         }
     }
 
