@@ -16,7 +16,7 @@ fileStream = file(fileOfFiles, "r")
     break
   }
   scores = read.table(scoreFile, header = TRUE)
-  logReg = glm(data = scores, PHENO ~ SCORE)
+  logReg = glm(data = scores, PHENO1 ~ SCORE1_AVG)
   r2     = NagelkerkeR2(logReg)
   rbind(out, cbind(scoreFile, r2))
 }
