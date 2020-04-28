@@ -24,8 +24,8 @@ if (!options || options.h)
     return
 }
 
-def fileOfFiles      = options.f
-def OutputPrefix     = options.o
+String fileOfFiles   = options.f
+String OutputPrefix  = options.o
 def fofStream        = new File(fileOfFiles).newInputStream()
 File Out             = new File(OutputPrefix + ".allChr.snpRes")
 int snp_column       = 1
@@ -36,8 +36,8 @@ Out.write("SNP A1 A2 A1Effect" + "\n")
 
 fofStream.eachLine()
 {
-    def sBayesOut        = it.trim().stripIndent()
-    File sBayesOutStream = new File(sBayesOut).newInputStream()
+    String sBayesOut     = it.trim().stripIndent()
+    def sBayesOutStream  = new File(sBayesOut).newInputStream()
     int lineNum          = 0
     sBayesOutStream.eachLine()
     {
@@ -46,20 +46,25 @@ fofStream.eachLine()
         lineNum++
         if(lineNum == 1)
         {
-            for(int i = 0; i <= lineContents.length(); i++)
+            for(int i = 0; i < lineContents.size(); i++)
             {
                 switch (lineContents[i])
                 {
                     case "Name" :
                         snp_column = i
+			break
                     case "A1" :
                         a1_column = i
-                    case "A2"
+			break
+                    case "A2" :
                         a2_column = i
-                    case "A1Effect"
+			break
+                    case "A1Effect" :
                         a1_effect_column = i
+			break
                     default :
                         println "NOTE: Excluding column " + lineContents[i] + " not required for scoring"
+			break
                 }
             }
         }
@@ -75,4 +80,7 @@ fofStream.eachLine()
             Out.append(a1_effect + "\n")
         }
     }
+    sBayesOutStream.close()
 }
+
+fofStream.close()

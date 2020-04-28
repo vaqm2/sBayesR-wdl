@@ -33,7 +33,7 @@ task scoring {
         --bim ${bim} \
         --fam ${fam} \
         --out ${output_prefix} \
-        --q-score-range ${rangeList} ${p_value_file}\
+        --q-score-range ${rangeList} ${p_value_file} min \
         --score ${snp_effects} 1 2 4 header
     }
 

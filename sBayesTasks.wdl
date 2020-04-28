@@ -26,7 +26,11 @@ task run {
         File ld_bin_file
         File ld_info_file
         String output_prefix
+<<<<<<< HEAD
         String ld_prefix
+=======
+	String ld_prefix
+>>>>>>> 72ed9dbfc9dd707c077f4c1eb97d276af3e3115b
     }
 
     command {
