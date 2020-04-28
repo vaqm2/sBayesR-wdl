@@ -5,6 +5,13 @@ task p_ranges {
         File p_values
         String output_prefix
         String code_dir
+        String work_dir
+        String walltime
+        Int nodes
+        Int procs
+        Int memory_gb
+        String errout
+        String job_name
     }
 
     command {
@@ -13,6 +20,16 @@ task p_ranges {
 
     output {
         File rangeList = "${output_prefix}.rangeList.txt"
+    }
+
+    runtime {
+        walltime : walltime
+        nodes : nodes
+        procs : procs
+        memory_gb : memory_gb
+        errout : errout
+        job_name : job_name
+        work_dir : work_dir
     }
 }
 
@@ -26,6 +43,13 @@ task scoring {
         File p_value_file
         String output_prefix
         File PLINK
+        String work_dir
+        String walltime
+        Int nodes
+        Int procs
+        Int memory_gb
+        String errout
+        String job_name
     }
 
     command {
@@ -40,6 +64,16 @@ task scoring {
     output {
         Array [File] scores = glob("${output_prefix}.*.sscore")
     }
+
+    runtime {
+        walltime : walltime
+        nodes : nodes
+        procs : procs
+        memory_gb : memory_gb
+        errout : errout
+        job_name : job_name
+        work_dir : work_dir
+    }
 }
 
 task r2 {
@@ -48,6 +82,13 @@ task r2 {
         Array [File] scores
         String output_prefix
         File Rscript
+        String work_dir
+        String walltime
+        Int nodes
+        Int procs
+        Int memory_gb
+        String errout
+        String job_name
     }
 
     command {
@@ -56,5 +97,15 @@ task r2 {
 
     output {
         File NagelkerkeR2 = "${output_prefix}.VarianceExplained.txt"
+    }
+
+    runtime {
+        walltime : walltime
+        nodes : nodes
+        procs : procs
+        memory_gb : memory_gb
+        errout : errout
+        job_name : job_name
+        work_dir : work_dir
     }
 }

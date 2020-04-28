@@ -6,6 +6,13 @@ task split {
         File groovy_path
         String output_prefix
         String code_dir
+        String work_dir
+        String walltime
+        Int nodes
+        Int procs
+        Int memory_gb
+        String errout
+        String job_name
     }
 
     command {
@@ -15,6 +22,16 @@ task split {
     output {
         Array [File] gwas_by_chr = glob("${output_prefix}_*.assoc")
         File p_value_file        = "${output_prefix}.pValues.txt"
+    }
+
+    runtime {
+        walltime : walltime
+        nodes : nodes
+        procs : procs
+        memory_gb : memory_gb
+        errout : errout
+        job_name : job_name
+        work_dir : work_dir
     }
 }
 
@@ -27,6 +44,13 @@ task run {
         File ld_info_file
         String output_prefix
         String ld_prefix
+        String work_dir
+        String walltime
+        Int nodes
+        Int procs
+        Int memory_gb
+        String errout
+        String job_name
     }
 
     command {
@@ -45,6 +69,16 @@ task run {
     output {
         File snp_posterior = "${output_prefix}.snpRes"
     }
+
+    runtime {
+        walltime : walltime
+        nodes : nodes
+        procs : procs
+        memory_gb : memory_gb
+        errout : errout
+        job_name : job_name
+        work_dir : work_dir
+    }
 }
 
 task merge {
@@ -53,6 +87,13 @@ task merge {
         String output_prefix
         String code_dir
         File groovy_path
+        String work_dir
+        String walltime
+        Int nodes
+        Int procs
+        Int memory_gb
+        String errout
+        String job_name
     }
 
     command {
@@ -61,5 +102,15 @@ task merge {
 
     output {
         File snp_posteriors_merged = "${output_prefix}.allChr.snpRes"
+    }
+
+    runtime {
+        walltime : walltime
+        nodes : nodes
+        procs : procs
+        memory_gb : memory_gb
+        errout : errout
+        job_name : job_name
+        work_dir : work_dir
     }
 }
