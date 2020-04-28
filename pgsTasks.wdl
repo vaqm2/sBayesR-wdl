@@ -38,7 +38,7 @@ task scoring {
     }
 
     output {
-        Array [File] scores = glob("${output_prefix}.*.profile")
+        Array [File] scores = glob("${output_prefix}.*.sscore")
     }
 }
 
