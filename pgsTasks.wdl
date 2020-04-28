@@ -47,10 +47,11 @@ task r2 {
         String code_dir
         Array [File] scores
         String output_prefix
+        File Rscript
     }
 
     command {
-        ${code_dir}/calcNagelkerkeR2.R ${write_lines(scores)} ${output_prefix}
+        ${Rscript} ${code_dir}/calcNagelkerkeR2.R ${write_lines(scores)} ${output_prefix}
     }
 
     output {

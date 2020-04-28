@@ -34,6 +34,7 @@ workflow sBayesR {
         File gctb_executable_path
         File plink_executable_path
         File groovy_executable_path
+        File rscript_path
     }
 
     Map [String, File] ld_bins = read_json(json_ld_bins)
@@ -93,7 +94,8 @@ workflow sBayesR {
         input:
             code_dir      = code_dir,
             scores        = scoring.scores,
-            output_prefix = out
+            output_prefix = out,
+            Rscript       = rscript_path
     }
 
     output {
