@@ -10,7 +10,7 @@ task split {
         String walltime
         Int nodes
         Int procs
-        Int memory_gb
+        Int memory_mb
         String errout
         String job_name
     }
@@ -27,8 +27,8 @@ task split {
     runtime {
         walltime : walltime
         nodes : nodes
-        procs : procs
-        memory_gb : memory_gb
+        cpu : procs
+        memory_mb : memory_mb
         errout : errout
         job_name : job_name
         work_dir : work_dir
@@ -48,7 +48,7 @@ task run {
         String walltime
         Int nodes
         Int procs
-        Int memory_gb
+        Int memory_mb
         String errout
         String job_name
     }
@@ -73,8 +73,8 @@ task run {
     runtime {
         walltime : walltime
         nodes : nodes
-        procs : procs
-        memory_gb : memory_gb
+        cpu : procs
+        memory_mb : memory_mb
         errout : errout
         job_name : job_name
         work_dir : work_dir
@@ -91,7 +91,7 @@ task merge {
         String walltime
         Int nodes
         Int procs
-        Int memory_gb
+        Int memory_mb
         String errout
         String job_name
     }
@@ -107,8 +107,8 @@ task merge {
     runtime {
         walltime : walltime
         nodes : nodes
-        procs : procs
-        memory_gb : memory_gb
+        cpu : procs
+        memory_mb : memory_mb
         errout : errout
         job_name : job_name
         work_dir : work_dir
