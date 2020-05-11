@@ -10,7 +10,8 @@ task p_ranges {
         Int nodes
         Int procs
         Int memory_mb
-        String errout
+        String err
+        String out
         String job_name
     }
 
