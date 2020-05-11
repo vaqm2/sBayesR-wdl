@@ -12,7 +12,6 @@ task p_ranges {
         Int memory_mb
         String err
         String out
-        String job_name
     }
 
     command {
@@ -30,7 +29,6 @@ task p_ranges {
         memory_mb : memory_mb
         err : err
         out : out
-        job_name : job_name
         work_dir : work_dir
     }
 }
@@ -52,7 +50,6 @@ task scoring {
         Int memory_mb
         String err
         String out
-        String job_name
     }
 
     command {
@@ -75,7 +72,6 @@ task scoring {
         memory_mb : memory_mb
         err : err
         out : out
-        job_name : job_name
         work_dir : work_dir
     }
 }
@@ -93,7 +89,6 @@ task r2 {
         Int memory_mb
         String err
         String out
-        String job_name
     }
 
     command {
@@ -111,7 +106,6 @@ task r2 {
         memory_mb : memory_mb
         err : err
         out : out
-        job_name : job_name
         work_dir : work_dir
     }
 }

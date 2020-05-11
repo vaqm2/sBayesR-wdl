@@ -53,8 +53,7 @@ workflow sBayesR {
             procs         = 1,
             memory_mb     = 8000,
             err           = "split" + "_" + out + ".err",
-            out           = "split" + "_" + out + ".out",
-            job_name      = "split" + "_" + out
+            out           = "split" + "_" + out + ".out"
     }
 
     scatter(chr_assoc in split.gwas_by_chr) {
@@ -75,8 +74,7 @@ workflow sBayesR {
                 procs         = 1,
                 memory_mb     = 20000,
                 err           = "gctb" + "_" + chr + "_" + out + ".err",
-                out           = "gctb" + "_" + chr + "_" + out + ".out",
-                job_name      = "gctb" + "_" + chr + "_" + out
+                out           = "gctb" + "_" + chr + "_" + out + ".out"
         }
     }
 
@@ -92,8 +90,7 @@ workflow sBayesR {
             procs         = 1,
             memory_mb     = 4,
             err           = "merge" + "_" + out + ".err",
-            out           = "merge" + "_" + out + ".out",
-            job_name      = "merge" + "_" + out
+            out           = "merge" + "_" + out + ".out"
     }
 
     call pgs.p_ranges {
@@ -107,8 +104,7 @@ workflow sBayesR {
             procs         = 1,
             memory_mb     = 4000,
             err           = "p_ranges" + "_" + out + ".err",
-            out           = "p_ranges" + "_" + out + ".out",
-            job_name      = "p_ranges" + "_" + out
+            out           = "p_ranges" + "_" + out + ".out"
     }
 
     call pgs.scoring {
@@ -127,8 +123,7 @@ workflow sBayesR {
             procs         = 1,
             memory_mb     = 12000,
             err           = "score" + "_" + out + ".err",
-            out           = "score" + "_" + out + ".out",
-            job_name      = "score" + "_" + out
+            out           = "score" + "_" + out + ".out"
     }
 
     call pgs.r2 {
@@ -143,8 +138,7 @@ workflow sBayesR {
             procs         = 1,
             memory_mb     = 8000,
             err           = "r2" + "_" + out + ".err",
-            out           = "r2" + "_" + out + ".out",
-            job_name      = "r2" + "_" + out
+            out           = "r2" + "_" + out + ".out"
     }
 
     output {
