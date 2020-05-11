@@ -11,7 +11,8 @@ task split {
         Int nodes
         Int procs
         Int memory_mb
-        String errout
+        String err
+        String out
         String job_name
     }
 
@@ -29,7 +30,8 @@ task split {
         nodes : nodes
         cpu : procs
         memory_mb : memory_mb
-        errout : errout
+        err : err
+        out : out
         job_name : job_name
         work_dir : work_dir
     }
@@ -49,7 +51,8 @@ task run {
         Int nodes
         Int procs
         Int memory_mb
-        String errout
+        String err
+        String out
         String job_name
     }
 
@@ -75,7 +78,8 @@ task run {
         nodes : nodes
         cpu : procs
         memory_mb : memory_mb
-        errout : errout
+        err : err
+        out : out
         job_name : job_name
         work_dir : work_dir
     }
@@ -92,7 +96,8 @@ task merge {
         Int nodes
         Int procs
         Int memory_mb
-        String errout
+        String err
+        String out
         String job_name
     }
 
@@ -109,7 +114,8 @@ task merge {
         nodes : nodes
         cpu : procs
         memory_mb : memory_mb
-        errout : errout
+        err : err
+        out : out
         job_name : job_name
         work_dir : work_dir
     }

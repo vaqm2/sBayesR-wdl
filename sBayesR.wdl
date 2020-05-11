@@ -52,8 +52,9 @@ workflow sBayesR {
             nodes         = 1,
             procs         = 1,
             memory_mb     = 8000,
-            errout        = "split" + "_" + out,
-            job_name      = "split" + "_" + out,
+            err           = "split" + "_" + out + ".err",
+            out           = "split" + "_" + out + ".out",
+            job_name      = "split" + "_" + out
     }
 
     scatter(chr_assoc in split.gwas_by_chr) {
@@ -73,7 +74,8 @@ workflow sBayesR {
                 nodes         = 1,
                 procs         = 1,
                 memory_mb     = 20000,
-                errout        = "gctb" + "_" + chr + "_" + out,
+                err           = "gctb" + "_" + chr + "_" + out + ".err",
+                out           = "gctb" + "_" + chr + "_" + out + ".out",
                 job_name      = "gctb" + "_" + chr + "_" + out
         }
     }
@@ -89,7 +91,8 @@ workflow sBayesR {
             nodes         = 1,
             procs         = 1,
             memory_mb     = 4,
-            errout        = "merge" + "_" + out,
+            err           = "merge" + "_" + out + ".err",
+            out           = "merge" + "_" + out + ".out",
             job_name      = "merge" + "_" + out
     }
 
@@ -103,7 +106,8 @@ workflow sBayesR {
             nodes         = 1,
             procs         = 1,
             memory_mb     = 4000,
-            errout        = "p_ranges" + "_" + out,
+            err           = "p_ranges" + "_" + out + ".err",
+            out           = "p_ranges" + "_" + out + ".out",
             job_name      = "p_ranges" + "_" + out
     }
 
@@ -122,7 +126,8 @@ workflow sBayesR {
             nodes         = 1,
             procs         = 1,
             memory_mb     = 12000,
-            errout        = "score" + "_" + out,
+            err           = "score" + "_" + out + ".err",
+            out           = "score" + "_" + out + ".out",
             job_name      = "score" + "_" + out
     }
 
@@ -137,7 +142,8 @@ workflow sBayesR {
             nodes         = 1,
             procs         = 1,
             memory_mb     = 8000,
-            errout        = "r2" + "_" + out,
+            err           = "r2" + "_" + out + ".err",
+            out           = "r2" + "_" + out + ".out",
             job_name      = "r2" + "_" + out
     }
 

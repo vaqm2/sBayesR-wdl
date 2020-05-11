@@ -27,7 +27,8 @@ task p_ranges {
         nodes : nodes
         cpu : procs
         memory_mb : memory_mb
-        errout : errout
+        err : err
+        out : out
         job_name : job_name
         work_dir : work_dir
     }
@@ -48,7 +49,8 @@ task scoring {
         Int nodes
         Int procs
         Int memory_mb
-        String errout
+        String err
+        String out
         String job_name
     }
 
@@ -70,7 +72,8 @@ task scoring {
         nodes : nodes
         cpu : procs
         memory_mb : memory_mb
-        errout : errout
+        err : err
+        out : out
         job_name : job_name
         work_dir : work_dir
     }
@@ -87,7 +90,8 @@ task r2 {
         Int nodes
         Int procs
         Int memory_mb
-        String errout
+        String err
+        String out
         String job_name
     }
 
@@ -104,7 +108,8 @@ task r2 {
         nodes : nodes
         cpu : procs
         memory_mb : memory_mb
-        errout : errout
+        err : err
+        out : out
         job_name : job_name
         work_dir : work_dir
     }
