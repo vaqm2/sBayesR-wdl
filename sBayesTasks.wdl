@@ -13,6 +13,7 @@ task split {
         Int memory_mb
         String err
         String out
+        String job_name
     }
 
     command {
@@ -32,6 +33,7 @@ task split {
         err : err
         out : out
         work_dir : work_dir
+        job_name : job_name
     }
 }
 
@@ -51,6 +53,7 @@ task run {
         Int memory_mb
         String err
         String out
+        String job_name
     }
 
     command {
@@ -78,6 +81,7 @@ task run {
         err : err
         out : out
         work_dir : work_dir
+        job_name : job_name
     }
 }
 
@@ -94,6 +98,7 @@ task merge {
         Int memory_mb
         String err
         String out
+        String job_name
     }
 
     command {
@@ -112,5 +117,6 @@ task merge {
         err : err
         out : out
         work_dir : work_dir
+        job_name : job_name
     }
 }
