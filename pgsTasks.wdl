@@ -5,7 +5,7 @@ task p_ranges {
         File p_values
         String output_prefix
         String code_dir
-        String work_dir
+        String cwd
         String walltime
         Int nodes
         Int procs
@@ -30,7 +30,7 @@ task p_ranges {
         memory_mb : memory_mb
         err : err
         out : out
-        work_dir : work_dir
+        cwd : cwd
         job_name : job_name
     }
 }
@@ -45,7 +45,7 @@ task scoring {
         File p_value_file
         String output_prefix
         File PLINK
-        String work_dir
+        String cwd
         String walltime
         Int nodes
         Int procs
@@ -75,7 +75,7 @@ task scoring {
         memory_mb : memory_mb
         err : err
         out : out
-        work_dir : work_dir
+        cwd : cwd
         job_name : job_name
     }
 }
@@ -86,7 +86,7 @@ task r2 {
         Array [File] scores
         String output_prefix
         File Rscript
-        String work_dir
+        String cwd
         String walltime
         Int nodes
         Int procs
@@ -111,7 +111,7 @@ task r2 {
         memory_mb : memory_mb
         err : err
         out : out
-        work_dir : work_dir
+        cwd : cwd
         job_name : job_name
     }
 }

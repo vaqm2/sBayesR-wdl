@@ -6,7 +6,7 @@ task split {
         File groovy_path
         String output_prefix
         String code_dir
-        String work_dir
+        String cwd
         String walltime
         Int nodes
         Int procs
@@ -32,7 +32,7 @@ task split {
         memory_mb : memory_mb
         err : err
         out : out
-        work_dir : work_dir
+        cwd : cwd
         job_name : job_name
     }
 }
@@ -46,7 +46,7 @@ task run {
         File ld_info_file
         String output_prefix
         String ld_prefix
-        String work_dir
+        String cwd
         String walltime
         Int nodes
         Int procs
@@ -80,7 +80,7 @@ task run {
         memory_mb : memory_mb
         err : err
         out : out
-        work_dir : work_dir
+        cwd : cwd
         job_name : job_name
     }
 }
@@ -91,7 +91,7 @@ task merge {
         String output_prefix
         String code_dir
         File groovy_path
-        String work_dir
+        String cwd
         String walltime
         Int nodes
         Int procs
@@ -116,7 +116,7 @@ task merge {
         memory_mb : memory_mb
         err : err
         out : out
-        work_dir : work_dir
+        cwd : cwd
         job_name : job_name
     }
 }
