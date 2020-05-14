@@ -9,7 +9,7 @@ task p_ranges {
         String walltime
         Int nodes
         Int procs
-        Int memory_mb
+        Int memory_gb
         String err
         String out
         String job_name
@@ -27,7 +27,7 @@ task p_ranges {
         walltime : walltime
         nodes : nodes
         cpu : procs
-        memory_mb : memory_mb
+        memory_gb : memory_gb
         err : err
         out : out
         cwd : cwd
@@ -49,7 +49,7 @@ task scoring {
         String walltime
         Int nodes
         Int procs
-        Int memory_mb
+        Int memory_gb
         String err
         String out
         String job_name
@@ -72,7 +72,7 @@ task scoring {
         walltime : walltime
         nodes : nodes
         cpu : procs
-        memory_mb : memory_mb
+        memory_gb : memory_gb
         err : err
         out : out
         cwd : cwd
@@ -90,7 +90,7 @@ task r2 {
         String walltime
         Int nodes
         Int procs
-        Int memory_mb
+        Int memory_gb
         String err
         String out
         String job_name
@@ -108,7 +108,7 @@ task r2 {
         walltime : walltime
         nodes : nodes
         cpu : procs
-        memory_mb : memory_mb
+        memory_gb : memory_gb
         err : err
         out : out
         cwd : cwd
