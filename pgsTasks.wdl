@@ -25,12 +25,10 @@ task p_ranges {
 
     runtime {
         walltime : walltime
-        nodes : nodes
         cpu : procs
-        memory_gb : memory_gb
+        memory : memory_gb
         err : err
         out : out
-        cwd : cwd
         job_name : job_name
     }
 }
@@ -70,12 +68,10 @@ task scoring {
 
     runtime {
         walltime : walltime
-        nodes : nodes
         cpu : procs
-        memory_gb : memory_gb
+        memory : memory_gb
         err : err
         out : out
-        cwd : cwd
         job_name : job_name
     }
 }
@@ -106,12 +102,10 @@ task r2 {
 
     runtime {
         walltime : walltime
-        nodes : nodes
         cpu : procs
-        memory_gb : memory_gb
+        memory : memory_gb
         err : err
         out : out
-        cwd : cwd
         job_name : job_name
     }
 }

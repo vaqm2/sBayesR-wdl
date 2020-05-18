@@ -27,12 +27,10 @@ task split {
 
     runtime {
         walltime : walltime
-        nodes : nodes
         cpu : procs
-        memory_gb : memory_gb
+        memory : memory_gb
         err : err
         out : out
-        cwd : cwd
         job_name : job_name
     }
 }
@@ -75,12 +73,10 @@ task run {
 
     runtime {
         walltime : walltime
-        nodes : nodes
         cpu : procs
-        memory_gb : memory_gb
+        memory : memory_gb
         err : err
         out : out
-        cwd : cwd
         job_name : job_name
     }
 }
@@ -111,12 +107,10 @@ task merge {
 
     runtime {
         walltime : walltime
-        nodes : nodes
         cpu : procs
-        memory_gb : memory_gb
+        memory : memory_gb
         err : err
         out : out
-        cwd : cwd
         job_name : job_name
     }
 }
